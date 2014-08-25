@@ -27,20 +27,17 @@ $utf8 = [Text.Encoding]::UTF8
 $httpClient = New-Object 'System.Net.Http.HttpClient'
 $jsonMime = "application/json"
 
-Write-Host $("GET " + $docUri)
-$result = $httpClient.GetAsync($uri + "_stats").GetAwaiter().GetResult()
-if ($result.StatusCode -ne 404) {
-	Write-Host $("Unabled to create index '" + $index + "' as already exists at " + $uri)
-	exit 1
-}
-
-Write-Host $("PUT " + $docUri)
+Write-Host $("PUT " + $uri)
+$body = Get-Content $(Resolve-Path 'index-northwind' -Relative) -Encoding UTF8
 $content = New-Object 'System.Net.Http.StringContent' ($body, $utf8, $jsonMime)
 $result = $httpClient.PutAsync($uri, $content).GetAwaiter().GetResult()
 if ($result.StatusCode -ne 200) {
 	Write-Host $("Failed to create index '" + $index + "' at " + $uri)
-	exit 2
+	Write-Host $($result.Content.ReadAsStringAsync().Result)
+    $result.Dispose() | Out-Null
+	exit 1
 }
+$result.Dispose() | Out-Null
 
 Get-ChildItem -Recurse -Filter "*.json" | ForEach-Object {
     $docUri = $uri + $(Resolve-Path $_.FullName -Relative).Substring(2).Replace("\", "/").Replace(".json", "")
