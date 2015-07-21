@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ElasticLinq;
+using Newtonsoft.Json.Linq;
 using Northwind.Models;
 
 namespace Northwind
@@ -9,7 +10,7 @@ namespace Northwind
     {
         static void Main()
         {
-            var context = new NorthwindContext("http://192.168.56.10:9200/");
+            var context = new NorthwindContext("http://192.168.145.128:9200/");
         }
     }
 }
