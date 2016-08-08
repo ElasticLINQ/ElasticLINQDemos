@@ -16,7 +16,7 @@ namespace ElasticLinq
             return attr != null ? attr.TypeName : base.GetDocumentType(type);
         }
 
-        public override ICriteria GetTypeSelectionCriteria(Type docType)
+        public override ICriteria GetTypeSelectionCriteria(Type type)
         {
             // We use document type in Elasticsearch, which is good enough
             return null;
