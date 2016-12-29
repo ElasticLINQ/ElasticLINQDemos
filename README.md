@@ -1,6 +1,6 @@
 # ElasticLINQ Demos
 
-The code in this repository is used to demonstrate the usage of [ElasticLINQ](https://github.com/CenturyLinkCloud/ElasticLINQ), both with [Elasticsearch](http://www.elasticsearch.org) alone, and when using Elasticsearch with [Couchbase](http://www.couchbase.com/).
+The code in this repository is used to demonstrate the usage of [ElasticLINQ](https://github.com/ElasticLINQ/ElasticLINQ), both with [Elasticsearch](http://www.elasticsearch.org) alone, and when using Elasticsearch with [Couchbase](http://www.couchbase.com/).
 
 ## Northwind
 
